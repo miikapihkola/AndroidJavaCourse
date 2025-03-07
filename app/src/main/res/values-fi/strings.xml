@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">AndroidJavaKurssi</string>
+    <string name="game_title">Hei</string>
+    <string name="game_startBtn">Aloita</string>
+</resources>

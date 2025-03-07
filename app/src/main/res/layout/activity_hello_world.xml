@@ -8,7 +8,7 @@
     tools:context=".HelloWorld">
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/Logo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="52dp"
@@ -22,7 +22,7 @@
         app:srcCompat="@drawable/ic_launcher_foreground" />
 
     <ImageView
-        android:id="@+id/imageView4"
+        android:id="@+id/Image1"
         android:layout_width="370dp"
         android:layout_height="300dp"
         android:layout_marginBottom="16dp"
@@ -32,21 +32,21 @@
         app:srcCompat="@drawable/n_ytt_kuva_2025_02_25_002351" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/Title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello"
+        android:text="@string/game_title"
         android:textSize="34sp"
-        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintBottom_toTopOf="@+id/StartBtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+        app:layout_constraintTop_toBottomOf="@+id/Logo" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/StartBtn"
         android:layout_width="130dp"
         android:layout_height="100dp"
-        android:text="Start"
+        android:text="@string/game_startBtn"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
