@@ -3,4 +3,5 @@
     <string name="app_name">AndroidJavaKurssi</string>
     <string name="game_title">Hei</string>
     <string name="game_startBtn">Aloita</string>
+    <string name="image_description">Kuva</string>
 </resources>

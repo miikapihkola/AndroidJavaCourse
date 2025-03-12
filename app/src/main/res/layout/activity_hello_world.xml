@@ -5,6 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#B634ED"
     tools:context=".HelloWorld">
 
     <ImageView
@@ -12,6 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="52dp"
+        android:contentDescription="@string/image_description"
         android:rotation="-53"
         android:rotationX="49"
         android:rotationY="28"
@@ -26,6 +28,7 @@
         android:layout_width="370dp"
         android:layout_height="300dp"
         android:layout_marginBottom="16dp"
+        android:contentDescription="@string/image_description"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -36,7 +39,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/game_title"
-        android:textSize="34sp"
+        android:textAllCaps="true"
+        android:textColor="#040000"
+        android:textSize="48sp"
+        android:textStyle="bold|italic"
+        app:autoSizeTextType="uniform"
         app:layout_constraintBottom_toTopOf="@+id/StartBtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -46,12 +53,15 @@
         android:id="@+id/StartBtn"
         android:layout_width="130dp"
         android:layout_height="100dp"
+        android:backgroundTint="#57D722"
         android:text="@string/game_startBtn"
-        android:textSize="20sp"
+        android:textColor="#090000"
+        android:textSize="34sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.448" />
+        app:layout_constraintVertical_bias="0.448"
+        app:rippleColor="#00FDD1" />
 </androidx.constraintlayout.widget.ConstraintLayout>
