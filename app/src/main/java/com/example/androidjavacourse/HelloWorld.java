@@ -2,6 +2,8 @@ package com.example.androidjavacourse;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -23,7 +25,16 @@ public class HelloWorld extends AppCompatActivity {
             return insets;
         });
         Log.i(TAG, "Created");
+
+        Button startBtn = (Button) findViewById(R.id.StartBtn);
+        startBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d(TAG, "button clicked");
+            }
+        });
     }
+
 
 
 }
