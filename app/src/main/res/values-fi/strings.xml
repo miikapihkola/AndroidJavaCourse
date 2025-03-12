@@ -4,4 +4,5 @@
     <string name="game_title">Hei</string>
     <string name="game_startBtn">Aloita</string>
     <string name="image_description">Kuva</string>
+    <string name="game_desc">Arvaa missä on timantti.</string>
 </resources>
