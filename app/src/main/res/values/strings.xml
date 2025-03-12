@@ -2,6 +2,7 @@
     <string name="app_name">AndroidJavaCourse</string>
     <string name="game_title">Hello</string>
     <string name="game_startBtn">Start</string>
-    <string name="image_description">image</string>
+    <string name="image_description">Image</string>
     <string name="game_desc">Guess where the diamond is.</string>
+    <string name="btn_desc">Button</string>
 </resources>

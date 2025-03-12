@@ -5,4 +5,5 @@
     <string name="game_startBtn">Aloita</string>
     <string name="image_description">Kuva</string>
     <string name="game_desc">Arvaa missä on timantti.</string>
+    <string name="btn_desc">Painike</string>
 </resources>
