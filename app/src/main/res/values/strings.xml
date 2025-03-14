@@ -5,4 +5,10 @@
     <string name="image_description">Image</string>
     <string name="game_desc">Guess where the diamond is.</string>
     <string name="btn_desc">Button</string>
+    <string name="start_hello">Hello + Game</string>
+    <string name="start_calc">Calculator</string>
+    <string name="calculator_firstnumber">First number</string>
+    <string name="calculator_secondnumber">Second number</string>
+    <string name="calculator_total">Total</string>
+    <string name="calculator_title">Calculator</string>
 </resources>

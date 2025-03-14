@@ -6,4 +6,10 @@
     <string name="image_description">Kuva</string>
     <string name="game_desc">Arvaa missä on timantti.</string>
     <string name="btn_desc">Painike</string>
+    <string name="start_hello">Hei + Peli</string>
+    <string name="start_calc">Laskin</string>
+    <string name="calculator_firstnumber">Ensimmäinen nro</string>
+    <string name="calculator_secondnumber">Toinen nro</string>
+    <string name="calculator_total">Tulos</string>
+    <string name="calculator_title">Laskin</string>
 </resources>
