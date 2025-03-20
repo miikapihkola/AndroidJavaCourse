@@ -27,5 +27,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/start_calc" />
+
+        <Button
+            android:id="@+id/mainGameBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/start_game" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

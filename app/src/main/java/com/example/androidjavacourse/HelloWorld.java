@@ -1,10 +1,10 @@
 package com.example.androidjavacourse;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -27,8 +27,6 @@ public class HelloWorld extends AppCompatActivity {
         });
         Log.i(TAG, "Created");
 
-        // Intents
-        Intent guessGame = new Intent(this, Game.class);
 
         // Start button
         Button startBtn = (Button) findViewById(R.id.StartBtn);
@@ -36,7 +34,13 @@ public class HelloWorld extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Log.d(TAG, "button clicked");
-                startActivity(guessGame);
+                TextView text = (TextView) findViewById(R.id.Title);
+                if(text.getVisibility() == View.VISIBLE){
+                    text.setVisibility(View.GONE);
+                }
+                else {
+                    text.setVisibility(View.VISIBLE);
+                }
             }
         });
     }

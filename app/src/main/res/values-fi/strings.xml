@@ -2,7 +2,7 @@
 <resources>
     <string name="app_name">AndroidJavaKurssi</string>
     <string name="game_title">Hei</string>
-    <string name="game_startBtn">Aloita</string>
+    <string name="game_startBtn">Hei</string>
     <string name="image_description">Kuva</string>
     <string name="game_desc">Arvaa missä on timantti.</string>
     <string name="btn_desc">Painike</string>
@@ -12,4 +12,7 @@
     <string name="calculator_secondnumber">Toinen nro</string>
     <string name="calculator_total">Tulos</string>
     <string name="calculator_title">Laskin</string>
+    <string name="game_points">Edellinen Tulos:</string>
+    <string name="game_percent">Onnistumis Prosentti:</string>
+    <string name="start_game">Peli</string>
 </resources>

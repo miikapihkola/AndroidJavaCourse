@@ -1,14 +1,17 @@
 <resources>
     <string name="app_name">AndroidJavaCourse</string>
     <string name="game_title">Hello</string>
-    <string name="game_startBtn">Start</string>
+    <string name="game_startBtn">Hello</string>
     <string name="image_description">Image</string>
     <string name="game_desc">Guess where the diamond is.</string>
     <string name="btn_desc">Button</string>
-    <string name="start_hello">Hello + Game</string>
+    <string name="start_hello">Hello</string>
     <string name="start_calc">Calculator</string>
     <string name="calculator_firstnumber">First number</string>
     <string name="calculator_secondnumber">Second number</string>
     <string name="calculator_total">Total</string>
     <string name="calculator_title">Calculator</string>
+    <string name="game_points">Previous Score:</string>
+    <string name="game_percent">Success Rate:</string>
+    <string name="start_game">Game</string>
 </resources>

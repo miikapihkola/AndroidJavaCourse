@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
         // Intents
         Intent hello = new Intent(this, HelloWorld.class);
         Intent calculator = new Intent(this, Calculator.class);
+        Intent game = new Intent(this, Game.class);
 
         // Buttons
         Button startHello = (Button) findViewById(R.id.mainHelloBtn);
@@ -46,6 +47,15 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Log.d(TAG, "calcBtn clicked");
                 startActivity(calculator);
+            }
+        });
+
+        Button startGame = (Button) findViewById(R.id.mainGameBtn);
+        startGame.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d(TAG, "gameBtn clicked");
+                startActivity(game);
             }
         });
     }
