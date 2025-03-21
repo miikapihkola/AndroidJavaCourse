@@ -25,6 +25,8 @@ public class Game extends AppCompatActivity {
     public static final String TAG ="GuessGame";
     public Integer rightChoice = 0;
     public ArrayList<ImageButton> btnList = new ArrayList<ImageButton>();
+    public boolean canClick = true;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -85,10 +87,10 @@ public class Game extends AppCompatActivity {
     // Buttons
     public void gameBtnPressed(int id){
         Log.d(TAG, "Button " + id + " clicked");
-        if (id == rightChoice){
+        if (id == rightChoice && canClick){
             success(id);
         }
-        else {
+        else if(canClick) {
             failed(id);
         }
     }
@@ -105,10 +107,16 @@ public class Game extends AppCompatActivity {
     public void newGame(){
         Log.d(TAG,"New game round started");
         rightChoice = getRng();
-        for (ImageButton btn: btnList) {
-            btn.setVisibility(View.VISIBLE);
-        }
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                for (ImageButton btn: btnList) {
+                    btn.setVisibility(View.VISIBLE);
+                }
+            }
+        });
         Log.d(TAG,"New RNG is: " + rightChoice);
+        canClick = true;
     }
 
     // Failed
@@ -122,6 +130,7 @@ public class Game extends AppCompatActivity {
     // Success
     public void success(int id){
         Log.d(TAG,"Successful guess");
+        canClick = false;
         Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.spin_animation);
         btnList.get(id).startAnimation(animation);
         btnList.get(id).setVisibility(View.INVISIBLE);
@@ -133,7 +142,7 @@ public class Game extends AppCompatActivity {
             }
         };
         Log.d(TAG,"Timer started...");
-        timer.schedule(tasknew, 1000L);
+        timer.schedule(tasknew, 1500L);
     }
 
     // Get Rng
