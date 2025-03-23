@@ -17,6 +17,7 @@
             android:exported="false" />
         <activity
             android:name=".Game"
+            android:parentActivityName=".MainActivity"
             android:exported="false" />
         <activity
             android:name=".HelloWorld"

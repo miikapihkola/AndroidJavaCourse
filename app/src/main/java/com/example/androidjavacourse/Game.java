@@ -7,8 +7,10 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toolbar;
 
 import androidx.activity.EdgeToEdge;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -81,13 +83,18 @@ public class Game extends AppCompatActivity {
 
         });
 
+        //Toolbar
+        toolbar = (Toolbar) findViewById(R.id.gameToolbar);
+        setSupportActionBar(toolbar);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+
         btnList.add(btn1);
         btnList.add(btn2);
         btnList.add(btn3);
         btnList.add(btn4);
 
         newGame();
-
     }
 
 
@@ -163,7 +170,7 @@ public class Game extends AppCompatActivity {
             }
         };
         Log.d(TAG,"Timer started...");
-        timer.schedule(tasknew, 1500L);
+        timer.schedule(tasknew, 1000L);
     }
 
     // Get Rng
