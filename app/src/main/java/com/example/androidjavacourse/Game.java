@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -26,9 +27,12 @@ public class Game extends AppCompatActivity {
     public Integer rightChoice = 0;
     public ArrayList<ImageButton> btnList = new ArrayList<ImageButton>();
     public boolean canClick = true;
+    public Integer[] stats = {0,0,0,0};
+    public Integer[] currentgame = {0,0};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_game);
@@ -72,7 +76,9 @@ public class Game extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 refreshGame();
+
             }
+
         });
 
         btnList.add(btn1);
@@ -81,6 +87,7 @@ public class Game extends AppCompatActivity {
         btnList.add(btn4);
 
         newGame();
+
     }
 
 
@@ -96,16 +103,20 @@ public class Game extends AppCompatActivity {
     }
     public void refreshGame(){
         Log.d(TAG, "RefreshBtn clicked");
-    }
-
-    // Update Score
-    public void updateScore(){
-        Log.d(TAG,"Score updated");
+        stats[2] = 0;
+        stats[3] = 0;
+        newGame();
     }
 
     // Set New Game Round
     public void newGame(){
         Log.d(TAG,"New game round started");
+        for (Integer i: currentgame) {
+                currentgame[i] = 0;
+        }
+        TextView score = (TextView) findViewById(R.id.scoreboard_counter);
+        TextView scorePercent = (TextView) findViewById(R.id.scoreboard_percent);
+        Double percent = stats[2].doubleValue() / stats[3].doubleValue() * 100;
         rightChoice = getRng();
         runOnUiThread(new Runnable() {
             @Override
@@ -113,6 +124,8 @@ public class Game extends AppCompatActivity {
                 for (ImageButton btn: btnList) {
                     btn.setVisibility(View.VISIBLE);
                 }
+                score.setText(stats[0] + " / " + stats[1]);
+                scorePercent.setText(percent.intValue() + " %");
             }
         });
         Log.d(TAG,"New RNG is: " + rightChoice);
@@ -125,12 +138,20 @@ public class Game extends AppCompatActivity {
         Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_animation);
         btnList.get(id).startAnimation(animation);
         btnList.get(id).setVisibility(View.INVISIBLE);
+        stats[3]++;
+        currentgame[1]++;
     }
 
     // Success
     public void success(int id){
         Log.d(TAG,"Successful guess");
         canClick = false;
+        stats[3]++;
+        stats[2]++;
+        currentgame[1]++;
+        currentgame[0]++;
+        stats[1] = currentgame[1];
+        stats[0] = currentgame[0];
         Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.spin_animation);
         btnList.get(id).startAnimation(animation);
         btnList.get(id).setVisibility(View.INVISIBLE);

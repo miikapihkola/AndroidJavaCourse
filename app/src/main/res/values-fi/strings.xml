@@ -13,6 +13,6 @@
     <string name="calculator_total">Tulos</string>
     <string name="calculator_title">Laskin</string>
     <string name="game_points">Edellinen Tulos:</string>
-    <string name="game_percent">Onnistumis Prosentti:</string>
+    <string name="game_percent">Kertymä Prosentti:</string>
     <string name="start_game">Peli</string>
 </resources>

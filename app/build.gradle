@@ -37,4 +37,8 @@ dependencies {
     testImplementation libs.junit
     androidTestImplementation libs.ext.junit
     androidTestImplementation libs.espresso.core
+    //DataStore instead of SharedPreferences
+    implementation "androidx.datastore:datastore-preferences:1.0.0"
+//RxJava2 support
+    implementation "androidx.datastore:datastore-preferences-rxjava2:1.0.0"
 }

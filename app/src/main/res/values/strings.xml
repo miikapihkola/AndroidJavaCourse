@@ -12,6 +12,6 @@
     <string name="calculator_total">Total</string>
     <string name="calculator_title">Calculator</string>
     <string name="game_points">Previous Score:</string>
-    <string name="game_percent">Success Rate:</string>
+    <string name="game_percent">Cumulative Rate:</string>
     <string name="start_game">Game</string>
 </resources>
