@@ -14,4 +14,8 @@
     <string name="game_points">Previous Score:</string>
     <string name="game_percent">Cumulative Rate:</string>
     <string name="start_game">Game</string>
+    <string name="title_activity_main2">MainActivity2</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
 </resources>

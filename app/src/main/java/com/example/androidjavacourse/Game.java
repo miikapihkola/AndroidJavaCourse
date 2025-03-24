@@ -7,11 +7,11 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toolbar;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -84,7 +84,7 @@ public class Game extends AppCompatActivity {
         });
 
         //Toolbar
-        toolbar = (Toolbar) findViewById(R.id.gameToolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.gameToolbar);
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
@@ -145,6 +145,8 @@ public class Game extends AppCompatActivity {
         Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_animation);
         btnList.get(id).startAnimation(animation);
         btnList.get(id).setVisibility(View.INVISIBLE);
+
+        // Game logic
         stats[3]++;
         currentgame[1]++;
     }
@@ -153,12 +155,15 @@ public class Game extends AppCompatActivity {
     public void success(int id){
         Log.d(TAG,"Successful guess");
         canClick = false;
+
+        //Game logic
         stats[3]++;
         stats[2]++;
         currentgame[1]++;
         currentgame[0]++;
         stats[1] = currentgame[1];
         stats[0] = currentgame[0];
+
         Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.spin_animation);
         btnList.get(id).startAnimation(animation);
         btnList.get(id).setVisibility(View.INVISIBLE);
