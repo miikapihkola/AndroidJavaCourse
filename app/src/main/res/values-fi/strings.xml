@@ -15,4 +15,11 @@
     <string name="game_points">Edellinen Tulos:</string>
     <string name="game_percent">Kertymä Prosentti:</string>
     <string name="start_game">Peli</string>
+    <string name="title_notifications">Ilmoitukset</string>
+    <string name="location_longitude_hint">Pituusaste</string>
+    <string name="location_latitude_hint">Leveysaste</string>
+    <string name="location_address_hint">Osoite</string>
+    <string name="location_showbutton_text">Näytä kartalla</string>
+    <string name="title_home">Koti</string>
+    <string name="title_dashboard">Sijainti</string>
 </resources>
