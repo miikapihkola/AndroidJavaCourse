@@ -3,6 +3,8 @@ package com.example.androidjavacourse.ui.dashboard;
 import android.Manifest;
 import android.content.Context;
 import android.content.pm.PackageManager;
+import android.location.Address;
+import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -17,12 +19,18 @@ import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.androidjavacourse.R;
 import com.example.androidjavacourse.databinding.FragmentDashboardBinding;
+import com.google.android.material.textfield.TextInputEditText;
+
+import java.util.List;
+import java.util.Locale;
 
 public class DashboardFragment extends Fragment implements LocationListener{
 
     public static final String TAG ="LocationFrag";
     private FragmentDashboardBinding binding;
+    public String currentLocation;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -47,6 +55,24 @@ public class DashboardFragment extends Fragment implements LocationListener{
     @Override
     public void onLocationChanged(@NonNull Location location) {
         Log.d(TAG, location.toString());
+
+        // Fields --- KOSKA FRAGMENT NIIN PITÄÄ LISÄTÄ getView().
+        TextInputEditText longitudeField = (TextInputEditText) getView().findViewById(R.id.longitudeField);
+        TextInputEditText latitudeField = (TextInputEditText) getView().findViewById(R.id.latitudeField);
+        TextInputEditText addressField = (TextInputEditText) getView().findViewById(R.id.addressField);
+
+        try{
+            Geocoder geocoder = new Geocoder(getContext(), Locale.getDefault());
+            List<Address> addresses = geocoder.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
+            Address address = addresses.get(0);
+            currentLocation = address.getAddressLine(0);
+        } catch (Exception e){
+            Log.e(TAG, e.getMessage());
+        }
+
+        longitudeField.setText(String.valueOf(location.getLongitude()));
+        latitudeField.setText(String.valueOf(location.getLatitude()));
+        addressField.setText(currentLocation);
     }
 
     public void locationMethod(){
