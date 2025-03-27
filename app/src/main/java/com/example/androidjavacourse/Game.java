@@ -17,8 +17,10 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.tencent.mmkv.MMKV;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -31,6 +33,7 @@ public class Game extends AppCompatActivity {
     public boolean canClick = true;
     public Integer[] stats = {0,0,0,0};
     public Integer[] currentgame = {0,0};
+    MMKV kv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,7 +86,29 @@ public class Game extends AppCompatActivity {
 
         });
 
-        //Toolbar
+        // MMKV Datastore
+        // https://github.com/Tencent/MMKV/wiki/android_tutorial
+        String rootDir = MMKV.initialize(this);
+        System.out.println("mmkv root: " + rootDir);
+        kv = MMKV.defaultMMKV();
+
+        try {
+            String[] stats2 = kv.decodeString("stats").replace(" ", "").replace("[", "").replace("]","").split("'");
+            Log.d(TAG, String.valueOf(stats2.length));
+            if (stats2.length > 0) {
+                for (int i = 0; i < stats2.length; i++) {
+                    stats[i] = Integer.parseInt(stats2[i]);
+                }
+                Log.d(TAG, "Stats loaded");
+            }
+            else {
+                Log.d(TAG, "No stats found");
+            }
+        }catch (Exception e){
+            Log.d(TAG, e.getMessage());
+        }
+
+        // Toolbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.gameToolbar);
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
@@ -94,6 +119,7 @@ public class Game extends AppCompatActivity {
         btnList.add(btn3);
         btnList.add(btn4);
 
+        System.out.println();
         newGame();
     }
 
@@ -112,13 +138,14 @@ public class Game extends AppCompatActivity {
         Log.d(TAG, "RefreshBtn clicked");
         stats[2] = 0;
         stats[3] = 0;
+        kv.encode("stats", Arrays.toString(stats));
         newGame();
     }
 
     // Set New Game Round
     public void newGame(){
         Log.d(TAG,"New game round started");
-        for (Integer i: currentgame) {
+        for(int i=0; i<currentgame.length; i++){
                 currentgame[i] = 0;
         }
         TextView score = (TextView) findViewById(R.id.scoreboard_counter);
@@ -163,6 +190,7 @@ public class Game extends AppCompatActivity {
         currentgame[0]++;
         stats[1] = currentgame[1];
         stats[0] = currentgame[0];
+        kv.encode("stats", Arrays.toString(stats));
 
         Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.spin_animation);
         btnList.get(id).startAnimation(animation);
