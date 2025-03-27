@@ -15,6 +15,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
@@ -36,6 +37,11 @@ public class DashboardFragment extends Fragment implements LocationListener{
     public String geoUriString;
     LocationManager locationManager;
 
+    // Fields --- KOSKA FRAGMENT NIIN PITÄÄ LISÄTÄ getView().
+    TextInputEditText longitudeField;
+    TextInputEditText latitudeField;
+    TextInputEditText addressField;
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         DashboardViewModel dashboardViewModel =
@@ -43,15 +49,21 @@ public class DashboardFragment extends Fragment implements LocationListener{
 
         binding = FragmentDashboardBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
-        /*
-        // alla oleva line aiheuttaa NullPointerException
-        Button openMap = (Button) getView().findViewById(R.id.openMapBtn);
+
+        // Fields --- KOSKA FRAGMENT NIIN PITÄÄ LISÄTÄ root.
+        longitudeField = (TextInputEditText) root.findViewById(R.id.longitudeField);
+        latitudeField = (TextInputEditText) root.findViewById(R.id.latitudeField);
+        addressField = (TextInputEditText) root.findViewById(R.id.addressField);
+
+        // KOSKA FRAGMENT NIIN PITÄÄ LISÄTÄ root.
+        Button openMap = (Button) root.findViewById(R.id.openMapBtn);
         openMap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 openMap();
             }
-        });*/
+        });
+
 
         locationMethod();
 
@@ -69,11 +81,6 @@ public class DashboardFragment extends Fragment implements LocationListener{
     @Override
     public void onLocationChanged(@NonNull Location location) {
         Log.d(TAG, location.toString());
-
-        // Fields --- KOSKA FRAGMENT NIIN PITÄÄ LISÄTÄ getView().
-        TextInputEditText longitudeField = (TextInputEditText) getView().findViewById(R.id.longitudeField);
-        TextInputEditText latitudeField = (TextInputEditText) getView().findViewById(R.id.latitudeField);
-        TextInputEditText addressField = (TextInputEditText) getView().findViewById(R.id.addressField);
 
         try{
             Geocoder geocoder = new Geocoder(getContext(), Locale.getDefault());
@@ -109,12 +116,15 @@ public class DashboardFragment extends Fragment implements LocationListener{
     }
 
     public void openMap(){
+        try{
         Uri gmmIntentUri = Uri.parse(geoUriString);
+        Log.d(TAG, geoUriString);
         Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
         mapIntent.setPackage("com.google.android.apps.maps");
-        // getActivity() LISÄTÄÄN KOSKA FRAGMENT
-        if (mapIntent.resolveActivity(getActivity().getPackageManager()) != null){
-            startActivity(mapIntent);
+        startActivity(mapIntent);
+        Log.d(TAG, "yritetty käynnistää map");
+        } catch (Exception e){
+            Log.e(TAG, e.getMessage());
         }
     }
 }
