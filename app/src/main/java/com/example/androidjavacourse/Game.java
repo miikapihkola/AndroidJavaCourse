@@ -93,8 +93,8 @@ public class Game extends AppCompatActivity {
         kv = MMKV.defaultMMKV();
 
         try {
-            String[] stats2 = kv.decodeString("stats").replace(" ", "").replace("[", "").replace("]","").split("'");
-            Log.d(TAG, String.valueOf(stats2.length));
+            String[] stats2 = kv.decodeString("stats").replace(" ", "").replace("[", "").replace("]","").split(",");
+            Log.d(TAG, "Pituus: " + String.valueOf(stats2.length) + " // Eka solu " + String.valueOf(stats2[0]));
             if (stats2.length > 0) {
                 for (int i = 0; i < stats2.length; i++) {
                     stats[i] = Integer.parseInt(stats2[i]);
