@@ -1,5 +1,6 @@
 package com.example.androidjavacourse;
 
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -7,6 +8,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.ActionBar;
@@ -34,6 +36,7 @@ public class Game extends AppCompatActivity {
     public Integer[] stats = {0,0,0,0};
     public Integer[] currentgame = {0,0};
     MMKV kv;
+    Drawable btnBg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -119,6 +122,9 @@ public class Game extends AppCompatActivity {
         btnList.add(btn3);
         btnList.add(btn4);
 
+        btnBg = btn1.getBackground();
+
+
         System.out.println();
         newGame();
     }
@@ -157,6 +163,8 @@ public class Game extends AppCompatActivity {
             public void run() {
                 for (ImageButton btn: btnList) {
                     btn.setVisibility(View.VISIBLE);
+                    btn.setImageResource(android.R.drawable.star_big_on);
+                    btn.setBackground(btnBg);
                 }
                 score.setText(stats[0] + " / " + stats[1]);
                 scorePercent.setText(percent.intValue() + " %");
@@ -182,6 +190,7 @@ public class Game extends AppCompatActivity {
     public void success(int id){
         Log.d(TAG,"Successful guess");
         canClick = false;
+        Toast.makeText(this, getResources().getString(R.string.game_toast), Toast.LENGTH_SHORT).show();
 
         //Game logic
         stats[3]++;
@@ -194,7 +203,11 @@ public class Game extends AppCompatActivity {
 
         Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.spin_animation);
         btnList.get(id).startAnimation(animation);
-        btnList.get(id).setVisibility(View.INVISIBLE);
+        btnList.get(id).setBackground(null);
+        btnList.get(id).setImageResource(android.R.drawable.sym_action_email);
+        //btnList.get(id).setVisibility(View.INVISIBLE);
+
+        // Delay for new game
         Timer timer = new Timer("Timer");
         TimerTask tasknew = new TimerTask() {
             @Override
@@ -203,12 +216,12 @@ public class Game extends AppCompatActivity {
             }
         };
         Log.d(TAG,"Timer started...");
-        timer.schedule(tasknew, 1000L);
+        timer.schedule(tasknew, 2000L);
     }
 
     // Get Rng
     public int getRng(){
         Random rand = new Random();
-       return rand.nextInt(4);
+        return rand.nextInt(4);
     }
 }

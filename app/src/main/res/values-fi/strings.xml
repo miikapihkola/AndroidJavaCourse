@@ -4,7 +4,7 @@
     <string name="game_title">Hei</string>
     <string name="game_startBtn">Hei</string>
     <string name="image_description">Kuva</string>
-    <string name="game_desc">Arvaa missä on timantti.</string>
+    <string name="game_desc">Arvaa missä on kirje.</string>
     <string name="btn_desc">Painike</string>
     <string name="start_hello">Hei + Peli</string>
     <string name="start_calc">Laskin</string>
@@ -15,7 +15,7 @@
     <string name="game_points">Edellinen Tulos:</string>
     <string name="game_percent">Kertymä Prosentti:</string>
     <string name="start_game">Peli</string>
-    <string name="title_notifications">Ilmoitukset</string>
+    <string name="title_notifications">Ajastin</string>
     <string name="location_longitude_hint">Pituusaste</string>
     <string name="location_latitude_hint">Leveysaste</string>
     <string name="location_address_hint">Osoite</string>
@@ -24,4 +24,8 @@
     <string name="title_dashboard">Sijainti</string>
     <string name="apm_state_true">Lentokonetila kytketty päälle</string>
     <string name="apm_state_false">Lentokonetila kytketty pois</string>
+    <string name="game_toast">Löysit oikean</string>
+    <string name="timer_start">Aloita</string>
+    <string name="timer_stop">Lopeta</string>
+    <string name="timer_pause">Pysäytä</string>
 </resources>

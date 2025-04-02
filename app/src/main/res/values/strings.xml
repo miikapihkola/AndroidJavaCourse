@@ -3,7 +3,7 @@
     <string name="game_title">Hello</string>
     <string name="game_startBtn">Hello</string>
     <string name="image_description">Image</string>
-    <string name="game_desc">Guess where the diamond is.</string>
+    <string name="game_desc">Guess where the mail is.</string>
     <string name="btn_desc">Button</string>
     <string name="start_hello">Hello</string>
     <string name="start_calc">Calculator</string>
@@ -16,11 +16,15 @@
     <string name="start_game">Game</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Location</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_notifications">Timer</string>
     <string name="location_longitude_hint">Longitude</string>
     <string name="location_latitude_hint">Latitude</string>
     <string name="location_address_hint">Address</string>
     <string name="location_showbutton_text">Show on map</string>
     <string name="apm_state_true">Airplanemode activated</string>
     <string name="apm_state_false">Airplanemode deactivated</string>
+    <string name="game_toast">Found it</string>
+    <string name="timer_start">Start</string>
+    <string name="timer_stop">Stop</string>
+    <string name="timer_pause">Pause</string>
 </resources>
