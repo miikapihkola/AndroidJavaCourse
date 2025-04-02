@@ -22,4 +22,6 @@
     <string name="location_showbutton_text">Näytä kartalla</string>
     <string name="title_home">Koti</string>
     <string name="title_dashboard">Sijainti</string>
+    <string name="apm_state_true">Lentokonetila kytketty päälle</string>
+    <string name="apm_state_false">Lentokonetila kytketty pois</string>
 </resources>

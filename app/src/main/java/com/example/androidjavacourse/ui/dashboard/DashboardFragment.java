@@ -87,14 +87,14 @@ public class DashboardFragment extends Fragment implements LocationListener{
             List<Address> addresses = geocoder.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
             Address address = addresses.get(0);
             currentLocation = address.getAddressLine(0);
+
+            longitudeField.setText(String.valueOf(location.getLongitude()));
+            latitudeField.setText(String.valueOf(location.getLatitude()));
+            addressField.setText(currentLocation);
+            geoUriString = "geo:" + latitudeField.getText() + "," + longitudeField.getText();
         } catch (Exception e){
             Log.e(TAG, e.getMessage());
         }
-
-        longitudeField.setText(String.valueOf(location.getLongitude()));
-        latitudeField.setText(String.valueOf(location.getLatitude()));
-        addressField.setText(currentLocation);
-        geoUriString = "geo:" + latitudeField.getText() + "," + longitudeField.getText();
     }
 
     public void locationMethod(){

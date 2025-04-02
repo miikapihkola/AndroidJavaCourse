@@ -1,8 +1,11 @@
 package com.example.androidjavacourse;
 
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -14,6 +17,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 public class MainActivity2 extends AppCompatActivity {
 
     private ActivityMain2Binding binding;
+    AirplanemodeReceiver apm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +37,34 @@ public class MainActivity2 extends AppCompatActivity {
         NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment_activity_main2);
         NavController navController = navHostFragment.getNavController();
         NavigationUI.setupWithNavController(binding.navView, navController);
+
+        // Other stuff
+        apm = new AirplanemodeReceiver();
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        IntentFilter filter = new IntentFilter(Intent.ACTION_AIRPLANE_MODE_CHANGED);
+
+        // Dokumentaatio tapa
+        boolean listenToBroadcastsFromOtherApps = false;
+        int receiverFlags = listenToBroadcastsFromOtherApps
+                ? ContextCompat.RECEIVER_EXPORTED
+                : ContextCompat.RECEIVER_NOT_EXPORTED;
+
+        ContextCompat.registerReceiver(this, apm, filter, receiverFlags);
+
+        // Opettajan tapa
+        //this.registerReceiver(apm, filter);
+
+        // Muista käydä laittamassa manifestista receiver:exported false
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        unregisterReceiver(apm);
+    }
 }

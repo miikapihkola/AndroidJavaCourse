@@ -21,4 +21,6 @@
     <string name="location_latitude_hint">Latitude</string>
     <string name="location_address_hint">Address</string>
     <string name="location_showbutton_text">Show on map</string>
+    <string name="apm_state_true">Airplanemode activated</string>
+    <string name="apm_state_false">Airplanemode deactivated</string>
 </resources>
