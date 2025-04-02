@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.NumberPicker;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -14,6 +15,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.androidjavacourse.R;
 import com.example.androidjavacourse.databinding.FragmentNotificationsBinding;
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.button.MaterialButtonToggleGroup;
 
 public class NotificationsFragment extends Fragment {
@@ -23,8 +25,9 @@ public class NotificationsFragment extends Fragment {
     NumberPicker numPicker;
     CountDownTimer timer;
     MaterialButtonToggleGroup materialButtonToggleGroup;
-    Boolean paused;
     Boolean timerOn;
+    MaterialButton starBtn;
+    TextView textTimer;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -49,6 +52,9 @@ public class NotificationsFragment extends Fragment {
             }
         });
 
+        timerOn = false;
+        starBtn = (MaterialButton) root.findViewById(R.id.btn_start);
+        textTimer = (TextView) root.findViewById(R.id.textTimer);
         materialButtonToggleGroup = (MaterialButtonToggleGroup) root.findViewById(R.id.toggleBtnGroup);
         materialButtonToggleGroup.addOnButtonCheckedListener(
                 new MaterialButtonToggleGroup.OnButtonCheckedListener() {
@@ -83,15 +89,10 @@ public class NotificationsFragment extends Fragment {
     public void numberPickerChange(){
         Log.d(TAG,"value changed");
     }
-    public void stopBtnPressed(){
-        Log.d(TAG,"stop btn pressed");
-        timer.cancel();
-        numPicker.setEnabled(true);
-        timerOn = false;
-    }
     public void startBtnPressed(){
         numPicker.setEnabled(false);
         timerOn = true;
+        starBtn.setText(getResources().getString(R.string.timer_start));
         Log.d(TAG,"start btn pressed, time start: " + numPicker.getValue());
         timer = new CountDownTimer(numPicker.getValue() * 1000, 1000) {
             @Override
@@ -105,12 +106,24 @@ public class NotificationsFragment extends Fragment {
             }
         }.start();
     }
+    public void stopBtnPressed(){
+        Log.d(TAG,"stop btn pressed");
+        if(timerOn) {
+            timer.cancel();
+        }
+        numPicker.setEnabled(true);
+        timerOn = false;
+        materialButtonToggleGroup.clearChecked();
+    }
     public void pauseBtnPressed(){
         Log.d(TAG,"pause btn pressed");
-
+        if(timerOn) {
+            timer.cancel();
+            starBtn.setText(getResources().getString(R.string.timer_continue));
+        }
     }
     public void timerTick(long millisUntilFinished){
-        Log.d(TAG, "Timer tick");
+        //Log.d(TAG, "Timer tick");
         numPicker.setValue(numPicker.getValue()-1);
     }
     public void timerFin(){
