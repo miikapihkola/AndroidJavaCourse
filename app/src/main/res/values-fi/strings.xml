@@ -28,4 +28,5 @@
     <string name="timer_start">Aloita</string>
     <string name="timer_stop">Lopeta</string>
     <string name="timer_pause">Pysäytä</string>
+    <string name="timer_continue">Jatka</string>
 </resources>

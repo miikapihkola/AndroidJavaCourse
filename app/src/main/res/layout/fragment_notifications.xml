@@ -20,7 +20,7 @@
         tools:context=".MainActivity">
 
         <com.google.android.material.button.MaterialButtonToggleGroup
-            android:id="@+id/activity_main_togglebutton"
+            android:id="@+id/toggleBtnGroup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:singleSelection="true">
@@ -76,6 +76,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="99dp"
+        android:scrollbarSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
