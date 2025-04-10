@@ -1,5 +1,8 @@
 package com.example.androidjavacourse.ui.notifications;
 
+import android.media.Ringtone;
+import android.media.RingtoneManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.util.Log;
@@ -115,6 +118,7 @@ public class NotificationsFragment extends Fragment {
         if(timerOn) {
             timer.cancel();
         }
+        numPicker.setValue(0);
         numPicker.setEnabled(true);
         timerOn = false;
         starBtn.setText(getResources().getString(R.string.timer_start));
@@ -136,6 +140,10 @@ public class NotificationsFragment extends Fragment {
     }
     public void timerFin(){
         Log.d(TAG, "Timer Fin");
+        Uri currentAlarmUri = RingtoneManager.getActualDefaultRingtoneUri(getActivity()
+                .getApplicationContext(), RingtoneManager.TYPE_ALARM);
+        Ringtone currentAlarm = RingtoneManager.getRingtone(getActivity(), currentAlarmUri);
+        currentAlarm.play();
         numPicker.setEnabled(true);
         materialButtonToggleGroup.clearChecked();
         timerOn = false;
@@ -146,6 +154,7 @@ public class NotificationsFragment extends Fragment {
             @Override
             public void run() {
                 textTimer.setVisibility(View.INVISIBLE);
+                currentAlarm.stop();
             }
         }, 1500);
     }
