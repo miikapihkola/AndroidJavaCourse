@@ -6,6 +6,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.NumberPicker;
 import android.widget.TextView;
 
@@ -55,6 +57,7 @@ public class NotificationsFragment extends Fragment {
         timerOn = false;
         starBtn = (MaterialButton) root.findViewById(R.id.btn_start);
         textTimer = (TextView) root.findViewById(R.id.textTimer);
+        textTimer.setVisibility(View.INVISIBLE);
         materialButtonToggleGroup = (MaterialButtonToggleGroup) root.findViewById(R.id.toggleBtnGroup);
         materialButtonToggleGroup.addOnButtonCheckedListener(
                 new MaterialButtonToggleGroup.OnButtonCheckedListener() {
@@ -87,11 +90,12 @@ public class NotificationsFragment extends Fragment {
     }
 
     public void numberPickerChange(){
-        Log.d(TAG,"value changed");
+        //Log.d(TAG,"value changed");
     }
     public void startBtnPressed(){
         numPicker.setEnabled(false);
         timerOn = true;
+        textTimer.setVisibility(View.VISIBLE);
         starBtn.setText(getResources().getString(R.string.timer_start));
         Log.d(TAG,"start btn pressed, time start: " + numPicker.getValue());
         timer = new CountDownTimer(numPicker.getValue() * 1000, 1000) {
@@ -113,6 +117,8 @@ public class NotificationsFragment extends Fragment {
         }
         numPicker.setEnabled(true);
         timerOn = false;
+        starBtn.setText(getResources().getString(R.string.timer_start));
+        textTimer.setVisibility(View.INVISIBLE);
         materialButtonToggleGroup.clearChecked();
     }
     public void pauseBtnPressed(){
@@ -124,12 +130,23 @@ public class NotificationsFragment extends Fragment {
     }
     public void timerTick(long millisUntilFinished){
         //Log.d(TAG, "Timer tick");
-        numPicker.setValue(numPicker.getValue()-1);
+        //numPicker.setValue(numPicker.getValue()-1);
+        numPicker.setValue((int)millisUntilFinished/1000);
+        textTimer.setText(String.valueOf((int)millisUntilFinished/1000) + " s");
     }
     public void timerFin(){
         Log.d(TAG, "Timer Fin");
         numPicker.setEnabled(true);
         materialButtonToggleGroup.clearChecked();
         timerOn = false;
+        Animation animation = AnimationUtils.loadAnimation(getActivity().getApplicationContext(), R.anim.spin_animation);
+        textTimer.setText(getResources().getString(R.string.timer_ending));
+        textTimer.startAnimation(animation);
+        textTimer.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                textTimer.setVisibility(View.INVISIBLE);
+            }
+        }, 1500);
     }
 }

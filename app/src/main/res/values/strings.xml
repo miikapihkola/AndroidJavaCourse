@@ -28,4 +28,5 @@
     <string name="timer_stop">Stop</string>
     <string name="timer_pause">Pause</string>
     <string name="timer_continue">Continue</string>
+    <string name="timer_ending">Time\'s out</string>
 </resources>

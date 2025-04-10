@@ -203,8 +203,13 @@ public class Game extends AppCompatActivity {
 
         Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.spin_animation);
         btnList.get(id).startAnimation(animation);
-        btnList.get(id).setBackground(null);
-        btnList.get(id).setImageResource(android.R.drawable.sym_action_email);
+        btnList.get(id).postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                btnList.get(id).setBackground(null);
+                btnList.get(id).setImageResource(android.R.drawable.sym_action_email);
+            }
+        }, animation.getDuration() + 150);
         //btnList.get(id).setVisibility(View.INVISIBLE);
 
         // Delay for new game
