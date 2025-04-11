@@ -16,7 +16,9 @@ import com.example.androidjavacourse.Calculator;
 import com.example.androidjavacourse.Game;
 import com.example.androidjavacourse.HelloWorld;
 import com.example.androidjavacourse.R;
+import com.example.androidjavacourse.YtjSearch;
 import com.example.androidjavacourse.databinding.FragmentHomeBinding;
+import com.google.android.material.textfield.TextInputEditText;
 
 public class HomeFragment extends Fragment {
 
@@ -35,6 +37,7 @@ public class HomeFragment extends Fragment {
         Intent hello = new Intent(getActivity(), HelloWorld.class);
         Intent calculator = new Intent(getActivity(), Calculator.class);
         Intent game = new Intent(getActivity(), Game.class);
+        Intent ytj = new Intent(getActivity(), YtjSearch.class);
 
         // Buttons
         Button startHello = (Button) root.findViewById(R.id.mainHelloBtn);
@@ -61,6 +64,19 @@ public class HomeFragment extends Fragment {
             public void onClick(View v) {
                 Log.d(TAG, "gameBtn clicked");
                 startActivity(game);
+            }
+        });
+
+        Button ytjSearch = (Button) root.findViewById(R.id.mainSearchBtn);
+        ytjSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TextInputEditText searchText = (TextInputEditText) root.findViewById(R.id.searchTextBox);
+                if(String.valueOf(searchText.getText()).equals("") == false)
+                {
+                    ytj.putExtra("inputText", String.valueOf(searchText.getText()));
+                    startActivity(ytj);
+                }
             }
         });
         // Tämä viimetteeksi

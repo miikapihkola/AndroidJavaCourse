@@ -29,4 +29,6 @@
     <string name="timer_pause">Pause</string>
     <string name="timer_continue">Continue</string>
     <string name="timer_ending">Time\'s out</string>
+    <string name="home_searchHint">Search company by name</string>
+    <string name="home_searchBtnText">Search</string>
 </resources>

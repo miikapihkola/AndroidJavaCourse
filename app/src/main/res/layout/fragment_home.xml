@@ -7,8 +7,8 @@
     tools:context=".ui.home.HomeFragment">
 
     <LinearLayout
-        android:layout_width="192dp"
-        android:layout_height="329dp"
+        android:layout_width="331dp"
+        android:layout_height="332dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -19,18 +19,47 @@
             android:id="@+id/mainHelloBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:insetLeft="75dp"
+            android:insetRight="75dp"
             android:text="@string/start_hello" />
 
         <Button
             android:id="@+id/mainCalcBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:insetLeft="75dp"
+            android:insetRight="75dp"
             android:text="@string/start_calc" />
 
         <Button
             android:id="@+id/mainGameBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:insetLeft="75dp"
+            android:insetRight="75dp"
             android:text="@string/start_game" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/home_searchHint">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/searchTextBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/mainSearchBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:insetLeft="75dp"
+            android:insetRight="75dp"
+            android:text="@string/home_searchBtnText" />
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

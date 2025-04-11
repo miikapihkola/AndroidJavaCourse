@@ -30,4 +30,6 @@
     <string name="timer_pause">Pysäytä</string>
     <string name="timer_continue">Jatka</string>
     <string name="timer_ending">Loppu</string>
+    <string name="home_searchHint">Etsi yritys nimellä</string>
+    <string name="home_searchBtnText">Etsi</string>
 </resources>
