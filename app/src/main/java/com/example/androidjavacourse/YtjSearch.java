@@ -77,6 +77,8 @@ public class YtjSearch extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
 
+
+
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
         items = new ArrayList<Item>();
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
