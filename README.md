@@ -117,12 +117,15 @@ Open using andoidstudio
 <summary>Exam:</summary>
   
   > date: 29.4.2025<br>
-  > start time: <br>
-  > time limit: <br>
+  > start time: 8:15<br>
+  > time limit: 3h 45min<br>
   > <br>
   > Located in:<br>
+  > app/src/main/java/com/example/androidjavacourse/Exam.java<br>
+  > app/src/main/res/layout/activity_exam.xml<br>
   > <br>
-  > xxx
+  > Simple currency convertor using fixed conversion numbers<br>
+  > Strings have prefix "exam_"
 </details>
 
 
