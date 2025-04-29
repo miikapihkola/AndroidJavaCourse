@@ -17,9 +17,13 @@
         android:theme="@style/Theme.AndroidJavaCourse"
         tools:targetApi="31">
         <activity
+            android:name=".Exam"
+            android:exported="false"
+            android:parentActivityName=".MainActivity"/>
+        <activity
             android:name=".YtjSearch"
-            android:parentActivityName=".MainActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".MainActivity" />
 
         <receiver
             android:name=".AirplanemodeReceiver"

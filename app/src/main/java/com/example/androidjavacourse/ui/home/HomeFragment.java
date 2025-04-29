@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.androidjavacourse.Calculator;
+import com.example.androidjavacourse.Exam;
 import com.example.androidjavacourse.Game;
 import com.example.androidjavacourse.HelloWorld;
 import com.example.androidjavacourse.R;
@@ -38,6 +39,7 @@ public class HomeFragment extends Fragment {
         Intent calculator = new Intent(getActivity(), Calculator.class);
         Intent game = new Intent(getActivity(), Game.class);
         Intent ytj = new Intent(getActivity(), YtjSearch.class);
+        Intent exam = new Intent(getActivity(), Exam.class);
 
         // Buttons
         Button startHello = (Button) root.findViewById(R.id.mainHelloBtn);
@@ -77,6 +79,15 @@ public class HomeFragment extends Fragment {
                     ytj.putExtra("inputText", String.valueOf(searchText.getText()));
                     startActivity(ytj);
                 }
+            }
+        });
+
+        Button openExam = (Button) root.findViewById(R.id.openExamBtn);
+        openExam.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d(TAG, "examBtn clicked");
+                startActivity(exam);
             }
         });
         // Tämä viimetteeksi

@@ -32,4 +32,8 @@
     <string name="timer_ending">Loppu</string>
     <string name="home_searchHint">Etsi yritys nimellä</string>
     <string name="home_searchBtnText">Etsi</string>
+    <string name="exam_toolbar">Tentti</string>
+    <string name="exam_title">Euroturistin valuuttamuunnin</string>
+    <string name="exam_error">Valuutan muuntaminen ei onnistu</string>
+    <string name="exam_startingHint">Syötä määrä ja valitse valuutta</string>
 </resources>

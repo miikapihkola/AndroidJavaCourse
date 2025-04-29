@@ -31,4 +31,8 @@
     <string name="timer_ending">Time\'s out</string>
     <string name="home_searchHint">Search company by name</string>
     <string name="home_searchBtnText">Search</string>
+    <string name="exam_toolbar">Exam</string>
+    <string name="exam_title">Euroturist currency convertor</string>
+    <string name="exam_error">Cannot convert value</string>
+    <string name="exam_startingHint">Input amount and choose currency</string>
 </resources>

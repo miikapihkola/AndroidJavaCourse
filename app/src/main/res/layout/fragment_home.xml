@@ -60,6 +60,13 @@
             android:insetLeft="75dp"
             android:insetRight="75dp"
             android:text="@string/home_searchBtnText" />
+        <Button
+            android:id="@+id/openExamBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:insetLeft="75dp"
+            android:insetRight="75dp"
+            android:text="Exam" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

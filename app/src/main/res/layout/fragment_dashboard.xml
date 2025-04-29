@@ -68,5 +68,6 @@
             android:paddingTop="15dp"
             android:paddingBottom="15dp"
             android:text="@string/location_showbutton_text" />
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
